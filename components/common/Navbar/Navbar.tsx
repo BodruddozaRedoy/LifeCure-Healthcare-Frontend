@@ -26,7 +26,7 @@ export function Navbar() {
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary">
                 <Heart className="h-6 w-6 text-primary-foreground" fill="currentColor" />
               </div>
-              <span className="text-xl font-bold text-foreground">HealthAI</span>
+              <span className="text-xl font-bold text-foreground">LifeCure</span>
             </Link>
           </div>
 
