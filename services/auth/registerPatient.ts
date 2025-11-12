@@ -13,17 +13,21 @@ export const registerPatient = async (
         email: formData.get("email"),
       },
     };
+    console.log("registerData", registerData);
 
     const newFormData = new FormData();
     newFormData.append("data", JSON.stringify(registerData));
-    const res = await fetch(`http://localhost:5000/api/v1/create-patient`, {
-      method: "POST",
-      body: newFormData,
-    }).then((res) => res.json());
+    const res = await fetch(
+      `http://localhost:5000/api/v1/user/create-patient`,
+      {
+        method: "POST",
+        body: newFormData,
+      }
+    ).then((res) => res.json());
     console.log(res, "res")
     return res;
   } catch (error) {
     console.log(error);
-    console.log("Registration failed")
+    console.log("Registration failed");
   }
 };

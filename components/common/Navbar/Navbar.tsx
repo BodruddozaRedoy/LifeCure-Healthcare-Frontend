@@ -13,6 +13,7 @@ import {
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
 import { cn } from '@/lib/utils';
+import { ModeToggle } from './ModeToggler';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -87,8 +88,8 @@ export function Navbar() {
                 </Button>
               </Link>
             </div>
+            <ModeToggle /> 
           </div>
-
           <button
             className="md:hidden rounded-md p-2 text-foreground hover:bg-accent"
             onClick={() => setIsOpen(!isOpen)}
