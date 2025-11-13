@@ -26,6 +26,14 @@ export function LoginForm({
 }: React.ComponentProps<"div">) {
   const [state, formAction, isPending] = useActionState(loginUser, null)
   console.log(state)
+  const getFieldError = (fieldName: string): string | null => {
+    if (state?.errors) {
+      const error = state.errors.find((err: any) => err.field === fieldName)
+      return error.error;
+    } else {
+      return null;
+    }
+  }
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
@@ -70,6 +78,13 @@ export function LoginForm({
                   placeholder="m@example.com"
                   required
                 />
+                {
+                  getFieldError("email") && (
+                    <FieldDescription className="text-red-500">
+                      {getFieldError("email")}
+                    </FieldDescription>
+                  )
+                }
               </Field>
               <Field>
                 <div className="flex items-center">
@@ -82,9 +97,16 @@ export function LoginForm({
                   </a>
                 </div>
                 <Input name="password" id="password" type="password" required />
+                {
+                  getFieldError("password") && (
+                    <FieldDescription className="text-red-500">
+                      {getFieldError("password")}
+                    </FieldDescription>
+                  )
+                }
               </Field>
               <Field>
-                <Button type="submit">Login</Button>
+                <Button type="submit" disabled={isPending}>Login</Button>
                 <FieldDescription className="text-center">
                   Don&apos;t have an account? <Link href="/register">Register</Link>
                 </FieldDescription>
